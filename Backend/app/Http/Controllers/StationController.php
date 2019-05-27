@@ -113,11 +113,11 @@ class StationController extends Controller
         $origin_token = $token;
         $token = json_decode(base64_decode($token), true);
         if (md5(sha1($origin_token.'afnweof!@#@#$sdf1334dcsS')) !== $sign || empty($token['openid'])) {
-            return redirect('http://182.254.161.213/BBT-2019-Station/Frontend/html/index.html');
+            return redirect('https://hemc.100steps.net/2019/fleeting-station-test/index.html');
         }
         $request->session()->put('openid', $token['openid']);
 
-        return redirect('http://182.254.161.213/BBT-2019-Station/Frontend/html/index.html');
+        return redirect('https://hemc.100steps.net/2019/fleeting-station-test/index.html');
     }
 
     public function getStationName(Request $request)
