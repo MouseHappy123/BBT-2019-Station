@@ -246,6 +246,111 @@ class StationController extends Controller
         return $img->response('png');
     }
 
+    public function returnBg(Request $request)
+    {
+        $stations = array('秀发号', '满绩号', '暴富号', '超越号', '脱单号', '暴瘦号', '吃鸡号');
+
+        $station = DB::table('station')->where('id', session()->get('id'))->first();
+        $passenger1 = $station->passenger1;
+        $passenger2 = $station->passenger2;
+        $passenger3 = $station->passenger3;
+        $destination = $station->destination;
+        $comment = $station->comment;
+        $img = Image::make(base_path().'/public/background.png');
+
+        $len = strlen($comment);
+
+        $img->text('恭喜你成为第'.session()->get('id').'位搭上列车的乘客', 80, 540, function ($font) {
+            $font->file(base_path().'/public/FZHTJW.ttf');
+
+            $font->size(20);
+
+            $font->valign('top');
+
+            $font->color('#D98247');
+        });
+        $img->text($passenger1.'  '.$passenger2, 185, 713, function ($font) {
+            $font->file(base_path().'/public/FZHTJW.ttf');
+
+            $font->size(25);
+
+            $font->valign('top');
+
+            $font->color('#FFFFFF');
+        });
+        $img->text($passenger3, 185, 747, function ($font) {
+            $font->file(base_path().'/public/FZHTJW.ttf');
+
+            $font->size(25);
+
+            $font->valign('top');
+
+            $font->color('#FFFFFF');
+        });
+        // $img->text($passenger2, 220, 610, function ($font) {
+        //     $font->file(base_path().'/public/FZHTJW.ttf');
+
+        //     $font->size(30);
+
+        //     $font->valign('top');
+
+        //     $font->color('#FFFFFF');
+        // });
+        // $img->text($passenger3, 270, 610, function ($font) {
+        //     $font->file(base_path().'/public/FZHTJW.ttf');
+
+        //     $font->size(30);
+
+        //     $font->valign('top');
+
+        //     $font->color('#FFFFFF');
+        // });
+        $img->text($destination, 400, 585, function ($font) {
+            $font->file(base_path().'/public/FZHTJW.ttf');
+
+            $font->size(50);
+
+            $font->valign('top');
+
+            $font->color('#FFFFFF');
+        });
+        if ($len < 24) {
+            $img->text($comment, 185, 770, function ($font) {
+                $font->file(base_path().'/public/FZHTJW.ttf');
+
+                $font->size(25);
+
+                $font->valign('top');
+
+                $font->color('#FFFFFF');
+            });
+        } else {
+            $array = str_split($comment, 24);
+            for ($i = 0; $i < count($array); ++$i) {
+                $img->text($array[$i], 185, 770 + $i * 30, function ($font) {
+                    $font->file(base_path().'/public/FZHTJW.ttf');
+
+                    $font->size(25);
+
+                    $font->valign('top');
+
+                    $font->color('#FFFFFF');
+                });
+            }
+        }
+        $img->text($stations[session()->get('code')], 285, 585, function ($font) {
+            $font->file(base_path().'/public/FZHTJW.ttf');
+
+            $font->size(25);
+
+            $font->valign('top');
+
+            $font->color('#FFFFFF');
+        });
+
+        return $img->response('png');
+    }
+
     public function draw(Request $request)
     {
         return response()->json([
