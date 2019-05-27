@@ -153,6 +153,10 @@ class StationController extends Controller
         $comment = $station->comment;
         $img = Image::make(base_path().'/public/initial.png');
 
+        $QR = Image::make(base_path().'/public/QR.png')->resize(100, 100);
+
+        $img->insert($QR, 'bottom-right', 80, 50);
+
         $len = strlen($comment);
 
         $img->text('恭喜你成为第'.session()->get('id').'位搭上列车的乘客', 50, 390, function ($font) {
@@ -257,6 +261,10 @@ class StationController extends Controller
         $destination = $station->destination;
         $comment = $station->comment;
         $img = Image::make(base_path().'/public/background.png');
+
+        $QR = Image::make(base_path().'/public/QR.png')->resize(100, 100);
+
+        $img->insert($QR, 'bottom-right', 120, 400);
 
         $len = strlen($comment);
 
