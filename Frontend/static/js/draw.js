@@ -26,6 +26,10 @@ var colors = [
 ];
 
 $(function () {
+
+    //微信分享
+    wxshare();
+
     //活动时间检查
     var time = checkTime();
     if (time != 0) {

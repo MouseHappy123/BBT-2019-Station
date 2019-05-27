@@ -11,10 +11,14 @@ var checkdisplay = [
 ]
 var img = new Image();
 img.src = "./static/pictures/4-1.png";
-img.onload = function(){
-    $(".containerr").css("display","flex")
+img.onload = function () {
+    $(".containerr").css("display", "flex")
 }
 $(function () {
+
+    //微信分享
+    wxshare();
+
     $(".tip").attr("disabled", true);
     $(".arrow").attr("disabled", true);
 

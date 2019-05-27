@@ -28,8 +28,8 @@ var text = [
     "吃鸡号的汽笛已经响起！带上你的朋友伙伴，开黑五连坐，未来天天吃鸡，大吉大利！"
 ]
 
-var style =[
-    "hair","mark","rich","pass","love","thin","chicken"
+var style = [
+    "hair", "mark", "rich", "pass", "love", "thin", "chicken"
 ]
 
 //随机生成0-6的数字（用于随机生成图片）
@@ -49,6 +49,10 @@ img.onload = function () {
     $(".buttons").css("display", "flex")
 }
 $(function () {
+
+    //微信分享
+    wxshare();
+
     //活动时间检查
     var time = checkTime();
     if (time != 0) {

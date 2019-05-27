@@ -10,6 +10,10 @@ document.oncopy = function () {
 }
 
 $(function () {
+
+    //微信分享
+    wxshare();
+
     //插入背景  
     var bg = new Image();
     bg.id = "background";

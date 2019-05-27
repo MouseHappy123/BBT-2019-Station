@@ -11,10 +11,14 @@ var checkdisplay = [
 ]
 var img = new Image();
 img.src = "./static/pictures/4-1.png";
-img.onload = function(){
-    $(".containerr").css("display","flex")
+img.onload = function () {
+    $(".containerr").css("display", "flex")
 }
 $(function () {
+
+    //微信分享
+    wxshare();
+
     //活动时间检查
     var time = checkTime();
     if (time != 0) {
