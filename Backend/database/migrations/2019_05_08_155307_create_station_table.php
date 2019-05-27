@@ -12,6 +12,7 @@ class CreateStationTable extends Migration
     public function up()
     {
         Schema::create('station', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
             $table->increments('id');
             $table->string('openid', 100);
             $table->string('passenger1', 10);

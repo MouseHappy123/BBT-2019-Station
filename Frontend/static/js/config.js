@@ -1,14 +1,14 @@
-var Reg = /^(?:[\u4e00-\u9fa5]+)(?:·[\u4e00-\u9fa5]+)*$|^[a-zA-Z]+\s?[\.·\-()a-zA-Z]*[a-zA-Z]+$/;
+// var Reg = /^(?:[\u4e00-\u9fa5]+)(?:·[\u4e00-\u9fa5]+)*$|^[a-zA-Z]+\s?[\.·\-()a-zA-Z]*[a-zA-Z]+$/;
 
 function checkinput(display, id, errid, str) {
     console.log("enter")
     if (block(display)) {
         if (str.length != 0) {
-            if (!Reg.test(str)) {
-                $("#" + errid).text("只能包含中文或英文噢");
-                $("#" + id).val(str);
-                return false;
-            }
+            // if (!Reg.test(str)) {
+            //     $("#" + errid).text("只能包含中文或英文噢");
+            //     $("#" + id).val(str);
+            //     return false;
+            // }
             $("#" + errid).text("");
             return true;
         } else {
