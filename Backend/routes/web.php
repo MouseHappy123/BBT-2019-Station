@@ -25,6 +25,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('station/getStationName', ['uses' => 'StationController@getStationName']);
     Route::post('station/returnStationName', ['uses' => 'StationController@returnStationName']);
     Route::any('station/img', ['uses' => 'StationController@returnImg']);
+    Route::any('station/bg', ['uses' => 'StationController@returnBg']);
     Route::post('station/draw', ['uses' => 'StationController@draw']);
 });
 Route::get('/', function () {
