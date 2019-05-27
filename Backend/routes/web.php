@@ -21,13 +21,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('station/ticket', ['uses' => 'StationController@ticket']);
     Route::post('station/update', ['uses' => 'StationController@update']);
     Route::post('station/checkTime', ['uses' => 'StationController@checkTime']);
-    Route::get('station/checkOpenid', ['uses' => 'StationController@checkOpenid']);
     Route::post('station/getStationName', ['uses' => 'StationController@getStationName']);
     Route::post('station/returnStationName', ['uses' => 'StationController@returnStationName']);
     Route::any('station/img', ['uses' => 'StationController@returnImg']);
     Route::any('station/bg', ['uses' => 'StationController@returnBg']);
     Route::post('station/draw', ['uses' => 'StationController@draw']);
+    Route::get('station/login', ['uses' => 'StationController@login']);
 });
+Route::get('station/checkOpenid', ['uses' => 'StationController@checkOpenid']);
 Route::get('/', function () {
     return view('welcome');
 });

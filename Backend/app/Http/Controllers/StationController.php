@@ -365,4 +365,11 @@ class StationController extends Controller
             'errcode' => 0,
         ]);
     }
+
+    public function login(Request $request)
+    {
+        return response()->json([
+            'errcode' => 0,
+        ]);
+    }
 }
