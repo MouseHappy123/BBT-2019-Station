@@ -1,4 +1,4 @@
-const host = " http://182.254.161.213/BBT-2019-Station/Backend/public/station";
+const host = "https://hemc.100steps.net/2019/fleeting-station-test/api/station";
 const save = "/save/";
 const modify = "/modify/";
 const canvas_ = "/draw/";
@@ -9,10 +9,11 @@ const checkid = "/checkOpenid/";
 const savename = "/getStationName/";
 const returnName = "/returnStationName/";
 const state = "bug867675fyvgyv";
+const redirect = host + checkid;
 //wx.config传的url
-const portal = "http://182.254.161.213/BBT-2019-Station/Frontend/html/portal.html";
+const index = "https://hemc.100steps.net/2019/fleeting-station-test/index.html";
 //配图
-const pictureurl = "http://182.254.161.213/BBT-2019-Station/Frontend/static/pictures/ticket.jpg";
+const pictureurl = "https://hemc.100steps.net/2019/fleeting-station-test/static/pictures/ticket.jpg";
 //分享链接（暂时指向总宣）
 const link = "https://hemc.100steps.net/2019/fleeting-station/index.html";
 
@@ -63,7 +64,19 @@ function show(method, fn) {
     })
 }
 
-// //微信授权接口跳转（redirect由后端提供）
+window.onload = function(){
+  $.ajax({
+	type: "GET",
+	url: host + "/login",
+	contentType: "application/x-www-form-urlencoded",
+	statusCode: {
+	    401: function () {
+	       window.location.href = "https://hemc.100steps.net/2018/fireman/auth.php?redirect=" + redirect + "&state=" + state             }
+	}
+  })	
+}
+
+ //微信授权接口跳转（redirect由后端提供）
 // function weixin(redirect, state) {
 //     $.ajax({
 //         type: "GET",
@@ -95,21 +108,21 @@ function checkTime() {
 //         }
 //         if (res1.errcode == 540) {
 //             // 未授权 引导用户到认证页面
-//             //weixin(host + checkid, state)
-//             alert("未授权");
-//         }
-//         if (res1.errcode == 0) {
-//             return true;
-//         }
-//     })
-// }
+//             weixin(host + checkid, state)
+//           //  alert("未授权");
+ //        }
+ //        if (res1.errcode == 0) {
+ //            return true;
+ //        }
+ //    })
+ //}
 
 function wxshare() {
     $.ajax({
         type: "POST",
         url: "https://hemc.100steps.net/2017/wechat/Home/Public/getJsApi",
         data: {
-            url: portal,
+            url: index,
         },
         dataType: 'JSON',
         withCredentials: true,
@@ -121,7 +134,7 @@ function wxshare() {
         success: function (res) {
             wx.config({
                 debug: false,
-                appId: res.appid,
+                appId: res.appId,
                 timestamp: res.timestamp,
                 nonceStr: res.nonceStr,
                 signature: res.signature,

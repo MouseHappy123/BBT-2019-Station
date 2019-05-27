@@ -15,15 +15,12 @@ img.onload = function(){
     $(".containerr").css("display","flex")
 }
 $(function () {
-    $(".tip").attr("disabled", true);
-    $(".arrow").attr("disabled", true);
-
     // //活动时间检查
     // var time = checkTime();
     // if (time != 0) {
     //     $(".err-box").show();
     //     $(".err-text").html("活动时间<br>2019/5/28	到 2019/5/31");
-    //     $("#update-ticket").attr("disabled", true);
+    //     $("#create-ticket").attr("disabled", true);
     // }
     $(".err-button").click(function () {
         $(".err-box").hide();
@@ -55,19 +52,8 @@ $(function () {
         $(".tip").show();
         $(".arrow").show();
     })
-    show(update, function (res) {
-        var res1 = typechange(res);
-        if (res1.errcode == 0) {
-            $("#passager-name1").val(res1.passenger1);
-            $("#passager-name2").val(res1.passenger2);
-            $("#passager-name3").val(res1.passenger3);
-            $("#destination").val(res1.destination);
-            $("#message").val(res1.comment);
-        } else {
-            console.log("fails to get data.");
-        }
-    })
-    $("#update-ticket").click(function () {
+    $("#create-ticket").click(function () {
+
         //乘客信息填写
         for (var i = 0; i < 5; i++) {
             input[i] = getval(inputbox[i]);
@@ -79,8 +65,8 @@ $(function () {
             console.log("loop again")
         }
 
+        //message的检查
         judge[4] = message(inputbox[4], errmsg[4], input[4]);
-
 
         //向后台传数据
         if (judge[0] && judge[1] && judge[2] && judge[3] && judge[4]) {
@@ -89,15 +75,17 @@ $(function () {
                 "passenger2": input[1],
                 "passenger3": input[2],
                 "destination": input[3],
-                "comment": input[4],
+                "comment": input[4]
             }
-            ticketShow(modify, data, function (res) {
+            ticketShow(save, data, function (res) {
                 if (!res.errcode) {
                     window.location.href = 'ticket.html';
                 } else {
                     $('#errmsg_back').html(res.errmsg);
                 }
-            })
+            });
+        } else {
+            console.log("error")
         }
     })
 

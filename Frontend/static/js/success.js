@@ -1,22 +1,22 @@
 // var vconsole = new VConsole();
 
 var pic1 = [
-    "../static/pictures/3-2.png",
-    "../static/pictures/3-3.png",
-    "../static/pictures/3-4.png",
-    "../static/pictures/3-5.png",
-    "../static/pictures/3-6.png",
-    "../static/pictures/3-7.png",
-    "../static/pictures/3-8.png"
+    "./static/pictures/3-2.png",
+    "./static/pictures/3-3.png",
+    "./static/pictures/3-4.png",
+    "./static/pictures/3-5.png",
+    "./static/pictures/3-6.png",
+    "./static/pictures/3-7.png",
+    "./static/pictures/3-8.png"
 ];
 var pic2 = [
-    "../static/pictures/3-9.png",
-    "../static/pictures/3-10.png",
-    "../static/pictures/3-11.png",
-    "../static/pictures/3-12.png",
-    "../static/pictures/3-13.png",
-    "../static/pictures/3-14.png",
-    "../static/pictures/3-15.png"
+    "./static/pictures/3-9.png",
+    "./static/pictures/3-10.png",
+    "./static/pictures/3-11.png",
+    "./static/pictures/3-12.png",
+    "./static/pictures/3-13.png",
+    "./static/pictures/3-14.png",
+    "./static/pictures/3-15.png"
 ]
 var text = [
     "岁月如水，祝你此刻和未来一直拥有乌黑亮丽的秀发，赶快登上列车，去往不秃的远方吧。",
@@ -28,6 +28,10 @@ var text = [
     "吃鸡号的汽笛已经响起！带上你的朋友伙伴，网吧开黑五连坐，未来天天吃鸡，大吉大利！！"
 ]
 
+var style =[
+    "hair","mark","rich","pass","love","thin","chicken"
+]
+
 //随机生成0-6的数字（用于随机生成图片）
 function randomNumber(max) {
     return Math.floor(Math.random() * Math.floor(max));
@@ -37,7 +41,7 @@ var data = {
     "code": randomNum
 }
 var img = new Image();
-img.src = "../static/pictures/3-1.png";
+img.src = "./static/pictures/3-1.png";
 img.onload = function () {
     $(".success-pic").css("background-image", "url(" + pic1[randomNum] + ")")
     $(".success-text").css("background-image", "url(" + pic2[randomNum] + ")")
@@ -60,33 +64,12 @@ $(function () {
     $("#write-information").click(function () {
         return false;
     })
+
     //更改div样式
-    switch (randomNum) {
-        case 0:
-            $(".success-pic").addClass("hair");
-            break;
-        case 1:
-            break;
-        case 2:
-            $(".success-pic").addClass("rich");
-            break;
-        case 3:
-            $(".success-pic").addClass("pass");
-            break;
-        case 4:
-            $(".success-pic").addClass("love");
-            break;
-        case 5:
-            $(".success-pic").addClass("thin");
-            break;
-        case 6:
-            $(".success-pic").addClass("chicken");
-            break;
-        default:
-            console.log("number maybe wrong.")
-    }
+    $(".success-pic").addClass(style[randomNum]);
 
     //传列车号
+    //要改的函数 2
     ticketShow(savename, data, function (res) {
         console.log(res);
         if (res.errcode == 0) {
@@ -102,7 +85,7 @@ $(function () {
     })
 
     $("#write-information").click(function () {
-        window.location.href = "./index.html";
+        window.location.href = "./passenger.html";
     })
     $("#reselect").click(function (e) {
         e.preventDefault();

@@ -13,7 +13,7 @@ $("#canvas").css("left", 0.066 * width);
 var color = "#F7A44F";
 var img = new Image();
 var draw = false;
-img.src = "../static/pictures/2-1.png";
+img.src = "./static/pictures/2-1.png";
 img.onload = function () {
     $(".svg").css("display", "block");
     setTimeout(function () {
@@ -55,11 +55,12 @@ $(function () {
             $(".err-text").html("");
             $(".err-text").html("你还没有画画噢");
         } else {
+            //函数要改 1
             ticketShow(canvas_, data, function (res) {
                 if (res.errcode == 0) {
-                    window.location.href = "../html/success.html";
+                    window.location.href = "./success.html";
                 }else{
-                    window.location.href = "../html/success.html";
+                    window.location.href = "./success.html";
                 }
             })
         }
