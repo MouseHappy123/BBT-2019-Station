@@ -76,7 +76,7 @@ $(function () {
     img.onload = function () {
         $(".errmsg").show();
     };
-    img.src = host + '/img/' + "?t=" + Math.random();
+    img.src = host + '/img/';
     document.getElementById("container").appendChild(img);
 
     var longClick = 0;
@@ -110,6 +110,8 @@ $(function () {
         }
     });
 })
+
+
 
 
 // //7 缩小 12
