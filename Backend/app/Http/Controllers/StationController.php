@@ -161,7 +161,7 @@ class StationController extends Controller
 
         $QR = Image::make(base_path().'/public/QR.png')->resize(100, 100);
 
-        $img->insert($QR, 'bottom-right', 80, 50);
+        $img->insert($QR, 'bottom-right', 60, 50);
 
         $len = strlen($comment);
 
@@ -219,7 +219,7 @@ class StationController extends Controller
 
             $font->color('#FFFFFF');
         });
-        if ($len < 36) {
+        if ($len < 39) {
             $img->text($comment, 155, 630, function ($font) {
                 $font->file(base_path().'/public/FZHTJW.ttf');
 
@@ -230,7 +230,7 @@ class StationController extends Controller
                 $font->color('#FFFFFF');
             });
         } else {
-            $array = str_split($comment, 36);
+            $array = str_split($comment, 39);
             for ($i = 0; $i < count($array); ++$i) {
                 $img->text($array[$i], 155, 630 + $i * 30, function ($font) {
                     $font->file(base_path().'/public/FZHTJW.ttf');
@@ -328,7 +328,7 @@ class StationController extends Controller
 
             $font->color('#FFFFFF');
         });
-        if ($len < 36) {
+        if ($len < 39) {
             $img->text($comment, 185, 770, function ($font) {
                 $font->file(base_path().'/public/FZHTJW.ttf');
 
@@ -339,7 +339,7 @@ class StationController extends Controller
                 $font->color('#FFFFFF');
             });
         } else {
-            $array = str_split($comment, 36);
+            $array = str_split($comment, 39);
             for ($i = 0; $i < count($array); ++$i) {
                 $img->text($array[$i], 185, 770 + $i * 30, function ($font) {
                     $font->file(base_path().'/public/FZHTJW.ttf');
