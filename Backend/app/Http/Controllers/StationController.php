@@ -328,7 +328,7 @@ class StationController extends Controller
 
             $font->color('#FFFFFF');
         });
-        if ($len < 24) {
+        if ($len < 36) {
             $img->text($comment, 185, 770, function ($font) {
                 $font->file(base_path().'/public/FZHTJW.ttf');
 
@@ -339,7 +339,7 @@ class StationController extends Controller
                 $font->color('#FFFFFF');
             });
         } else {
-            $array = str_split($comment, 24);
+            $array = str_split($comment, 36);
             for ($i = 0; $i < count($array); ++$i) {
                 $img->text($array[$i], 185, 770 + $i * 30, function ($font) {
                     $font->file(base_path().'/public/FZHTJW.ttf');
