@@ -10,14 +10,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    bottom: 30%;
+    bottom: 25%;
     width: 100%;
 }
 
 .container {
-    /* background-image: url("../pictures/5-1.png");
+    background-image: url("../pictures/5-1.png");
     background-size: 100% 100%;
-    background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     overflow: hidden;
 }
 
