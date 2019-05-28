@@ -7,9 +7,9 @@ function checkinput(display, id, errid, str) {
     if (block(display)) {
         if (str.length != 0) {
             if (regStr.test(str)) {
-                $("#" + id).val(str.replace(regStr, ""));
+                var str_ = str.replace(regStr, "");
                 $("#" + errid).text("暂不支持emoji噢");
-                // $("#" + id).val(str);
+                $("#" + id).val(str_);
                 return false;
             } else {
                 $("#" + errid).text("");
