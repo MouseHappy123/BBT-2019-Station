@@ -10,6 +10,8 @@ const savename = "/getStationName/";
 const returnName = "/returnStationName/";
 const state = "bug867675fyvgyv";
 const redirect = host + checkid;
+const beginTime = '2019/5/28 0:0:0'
+const endTime = '2019/6/1 0:0:0'
 //wx.config传的url
 const index = "https://hemc.100steps.net/2019/fleeting-station-test/index.html";
 //配图
@@ -86,15 +88,11 @@ window.onload = function(){
 
 //检查是否在活动时间
 function checkTime() {
-    show(checktime, function (res) {
-        var res1;
-        if ((typeof res == 'object') && res.constructor == Object) {
-            res1 = res;
-        } else {
-            res1 = eval("(" + res + ")");
-        }
-        return res1.errcode;
-    })
+	if(new Date() < new Date(beginTime)) 
+		return 1;
+	if(new Date() > new Date(endTime))
+		return 1;
+	return 0;
 }
 
 // //检查是否有openid
