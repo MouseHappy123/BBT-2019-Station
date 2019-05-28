@@ -42,6 +42,11 @@ button {
     color: #FFFFFF;
     font-size: 16px;
     outline: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .countPassagers {
@@ -124,14 +129,18 @@ button {
 }
 .errmsg {
     text-align: center;
+    display: none;
     color: #8B9EA5;
     height: auto;
-    position: absolute;
     bottom: 19%;
-    width: 100%;
-    display: none;
+    width: 75%;
     font-size: 13px;
-    margin-bottom: 3%;
+    margin: 3% auto;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #img {

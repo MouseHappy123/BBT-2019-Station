@@ -73,7 +73,6 @@ $(function () {
     $(".success-pic").addClass(style[randomNum]);
 
     //传列车号
-    //要改的函数 2
     ticketShow(savename, data, function (res) {
         console.log(res);
         if (res.errcode == 0) {

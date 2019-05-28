@@ -18,7 +18,7 @@ $(function () {
     wxshare();
 
 
-    // 活动时间检查 (此处先注释用于内测)
+    // 活动时间检查 
     var time = checkTime();
     if (time == 0) {
     $("#entrance").click(function () {
