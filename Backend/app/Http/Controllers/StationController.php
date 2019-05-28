@@ -161,7 +161,7 @@ class StationController extends Controller
 
         $QR = Image::make(base_path().'/public/QR.png')->resize(100, 100);
 
-        $img->insert($QR, 'bottom-right', 60, 50);
+        $img->insert($QR, 'bottom-right', 30, 25);
 
         $len = strlen($comment);
 
@@ -270,7 +270,7 @@ class StationController extends Controller
 
         $QR = Image::make(base_path().'/public/QR.png')->resize(100, 100);
 
-        $img->insert($QR, 'bottom-right', 120, 400);
+        $img->insert($QR, 'bottom-right', 85, 372);
 
         $len = strlen($comment);
 
