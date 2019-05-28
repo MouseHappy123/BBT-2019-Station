@@ -7,7 +7,7 @@ var errmsg = [
     "errmsg_passenger1", "errmsg_passenger2", "errmsg_passenger3", "errmsg_destination", "errmsg_comment"
 ];
 var checkdisplay = [
-    "passager1", "passager2", "passager3", "destination"
+    "passager1", "passager2", "passager3", "destination","message"
 ]
 var img = new Image();
 img.src = "./static/pictures/4-1.png";
@@ -63,14 +63,14 @@ $(function () {
             input[i] = getval(inputbox[i]);
             console.log("loop")
         }
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 5; i++) {
             judge[i] = checkinput(checkdisplay[i], inputbox[i], errmsg[i], input[i]);
             console.log(judge[i])
             console.log("loop again")
         }
 
         //message的检查
-        judge[4] = message(inputbox[4], errmsg[4], input[4]);
+        // judge[4] = message(inputbox[4], errmsg[4], input[4]);
 
         //向后台传数据
         if (judge[0] && judge[1] && judge[2] && judge[3] && judge[4]) {
