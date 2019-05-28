@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    bottom: 25%;
+    bottom: 26%;
     width: 100%;
 }
 
@@ -130,7 +130,7 @@ button {
     bottom: 19%;
     width: 75%;
     font-size: 13px;
-    margin: 3% auto;
+    margin: 2% auto;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;

@@ -2,12 +2,12 @@
 var station = [
     "秀发号", "满绩号", "暴富号", "超越号", "脱单号", "暴瘦号", "吃鸡号",
 ]
-document.onselectstart = function () {
-    return false;
-}
-document.oncopy = function () {
-    return false;
-}
+// document.onselectstart = function () {
+//     return false;
+// }
+// document.oncopy = function () {
+//     return false;
+// }
 
 $(function () {
 
@@ -76,9 +76,41 @@ $(function () {
     img.onload = function () {
         $(".errmsg").show();
     };
-    img.src = host + '/img/';
+    img.src = host + '/img/' + "?t=" + Math.random();
     document.getElementById("container").appendChild(img);
+
+    var longClick = 0;
+    $("#img").on({
+        "touchstart": function (e) {
+            longClick = 0; //设置初始为0
+            timeOutEvent = setTimeout(function () {
+                timeOutEvent = 1;
+                // alert('你长按了'); 
+                //此处为长按事件-----在此显示遮罩层及删除按钮
+                longClick = 1; //假如长按，则设置为1
+            }, 500);
+        },
+        "touchmove": function (e) {
+            clearTimeout(timeOutEvent);
+            timeOutEvent = 0;
+            e.preventDefault();
+            longClick = 0;
+        },
+        "touchend": function (e) {
+            clearTimeout(timeOutEvent);
+            if (timeOutEvent != 0 && longClick == 0) { //点击
+                e.preventDefault();
+                $("#img").click(function () {
+                    return false;
+                })
+                //此处为点击事件----在此处添加跳转详情页
+                // alert('你点击了');
+            }
+            // alert("end")
+        }
+    });
 })
+
 
 // //7 缩小 12
 // function text(str){

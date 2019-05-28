@@ -1,20 +1,20 @@
 // var Reg = /^(?:[\u4e00-\u9fa5]+)(?:·[\u4e00-\u9fa5]+)*$|^[a-zA-Z]+\s?[\.·\-()a-zA-Z]*[a-zA-Z]+$/;
 //emoji正则过滤 + 特殊字符过滤
 var regStr = /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig;
-var patrn = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]/im;
-
+// var patrn = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]/im;
+var patrn = new RegExp(/[\@\#\$\ % \^\ & \ *  {\}\:\\L\ < \ > \?}\'\"\\\/\b\f\n\r\t]/g);
 function checkinput(display, id, errid, str) {
     console.log("enter")
     if (block(display)) {
         if (str.length != 0) {
             if (patrn.test(str)) {
                 $("#" + id).val(str);
-                $("#" + errid).text("有特殊符号噢");
+                $("#" + errid).text("暂不支持emoji和特殊符号噢");
                 return false;
             }
             if (regStr.test(str)) {
                 // var str_ = str.replace(regStr, "");
-                $("#" + errid).text("暂不支持emoji噢");
+                $("#" + errid).text("暂不支持emoji和特殊符号噢");
                 $("#" + id).val(str);
                 return false;
             } 
