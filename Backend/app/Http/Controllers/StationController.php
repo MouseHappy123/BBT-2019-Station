@@ -103,6 +103,12 @@ class StationController extends Controller
                 'errmsg' => '活动已结束',
             ]);
         }
+        if ($nowTime < $closeTime && $nowTime > $startTime) {
+            return response()->json([
+                'errcode' => 0,
+                'errmsg' => 'ok',
+            ]);
+        }
     }
 
     public function checkOpenid(Request $request)
